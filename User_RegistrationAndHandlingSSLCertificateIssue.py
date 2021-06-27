@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common import desired_capabilities
 import re
 
-
+#practicing working with regular expressions
 st = "I am Priya Tink, whatever, you got me!"
 r = re.compile(r'ti\s')
 match = r.search(st)
@@ -16,16 +16,20 @@ for m in match:
     print(m)
 print("match is", match)
 
-# driver = webdriver.Chrome()
-# f = DC.CHROME()
+#handling SSL Certificate errors for firefox and chrome drivers
 option = webdriver.ChromeOptions()
 option.add_argument("ignore-certificate-errors")
 driver = webdriver.Chrome(chrome_options=option)
 fox = webdriver.FirefoxProfile()
 fox.accept_untrusted_certs(True)
-#f.get("http://automationpractice.com/index.php")
+
+#global wait
 driver.set_page_load_timeout(5)
+
+#maximizing window
 driver.maximize_window()
+
+#handling different windows
 current_win = driver.current_window_handle
 signIn = driver.find_element_by_xpath("//a[@class='login']").click()
 create_email = driver.find_element_by_id("email_create")
@@ -76,4 +80,3 @@ print("Wow")
 win2 = driver.current_window_handle
 if current_win == win2:
     print("this is a different window")
-
